@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WE-ICT 2014 | Workshop on Women Empowerment through ICT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #D946A6;
+            --secondary: #3B82F6;
+            --accent: #10B981;
+            --dark: #0F172A;
+            --light: #F8FAFC;
+            --gradient-1: linear-gradient(135deg, #D946A6 0%, #9333EA 100%);
+            --gradient-2: linear-gradient(135deg, #3B82F6 0%, #06B6D4 100%);
+            --gradient-3: linear-gradient(135deg, #10B981 0%, #14B8A6 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--dark);
+            overflow: hidden;
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(217, 70, 166, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 90%, rgba(16, 185, 129, 0.15) 0%, transparent 50%);
+            animation: bgMove 20s ease-in-out infinite;
+        }
+
+        @keyframes bgMove {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-50px, -50px) rotate(180deg); }
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(15, 23, 42, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(217, 70, 166, 0.3));
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(217, 70, 166, 0.2);
+            border: 1px solid var(--primary);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--primary) 50%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            color: rgba(248, 250, 252, 0.8);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero-details {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .detail-item svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--primary);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            animation: fadeInUp 1s ease 0.6s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: 0 10px 30px rgba(217, 70, 166, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(217, 70, 166, 0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--primary);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            padding: 0.5rem 1.5rem;
+            background: rgba(217, 70, 166, 0.1);
+            border: 1px solid rgba(217, 70, 166, 0.3);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: rgba(248, 250, 252, 0.7);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .about-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .about-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Keynote Section */
+        .keynote-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .keynote-card {
+            background: linear-gradient(135deg, rgba(217, 70, 166, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .keynote-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(217, 70, 166, 0.3);
+        }
+
+        .keynote-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .keynote-card h4 {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .keynote-card p {
+            color: rgba(248, 250, 252, 0.8);
+        }
+
+        /* Schedule Section */
+        .schedule-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .schedule-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary), var(--accent));
+        }
+
+        .schedule-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .schedule-time {
+            text-align: right;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .schedule-content {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .schedule-content:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+        }
+
+        .schedule-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .schedule-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid var(--dark);
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        /* Call for Posters Section */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .topic-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .topic-item:hover {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .topic-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-3);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* Committees Section */
+        .committee-section {
+            margin-bottom: 3rem;
+        }
+
+        .committee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .committee-member {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .committee-member:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .committee-member h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .committee-member p {
+            font-size: 0.95rem;
+            color: rgba(248, 250, 252, 0.7);
+        }
+
+        /* Important Dates */
+        .dates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .date-card {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .date-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.3);
+        }
+
+        .date-card .date {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .date-card .event {
+            font-size: 1.1rem;
+            color: rgba(248, 250, 252, 0.9);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.9);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            margin-bottom: 2rem;
+        }
+
+        .footer-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(248, 250, 252, 0.7);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(248, 250, 252, 0.5);
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.animate {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .fade-in.animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: rgba(217, 70, 166, 0.2);
+            border: 2px solid var(--primary);
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .mobile-menu-btn:hover {
+            background: var(--primary);
+        }
+
+        .mobile-menu-btn:active {
+            transform: scale(0.95);
+        }
+
+        .nav-links.mobile-open {
+            display: flex;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: rgba(15, 23, 42, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+                z-index: 999;
+                animation: slideDown 0.3s ease;
+            }
+
+            @keyframes slideDown {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            .nav-links li {
+                text-align: center;
+            }
+
+            .nav-links a {
+                font-size: 1.1rem;
+                display: block;
+                padding: 0.5rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .schedule-timeline::before {
+                left: 20px;
+            }
+
+            .schedule-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding-left: 50px;
+            }
+
+            .schedule-time {
+                text-align: left;
+                justify-content: flex-start;
+                font-size: 1.2rem;
+            }
+
+            .schedule-dot {
+                left: 20px;
+            }
+
+            .schedule-content:hover {
+                transform: translateX(5px);
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* Particle Effect */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-100px) translateX(50px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation"></div>
+
+    <!-- Particles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <nav>
+            <div class="logo">
+                <img src="logo.jpeg" alt="WE-ICT Logo">
+                <span class="logo-text">WE-ICT 2014</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#venue">Venue</a></li>
+                <li><a href="#keynote">Keynote</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#posters">Call for Posters</a></li>
+                <li><a href="#proceedings">Proceedings</a></li>
+                <li><a href="#committees">Committees</a></li>
+                <li><a href="#dates">Important Dates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">Workshop 2014</div>
+            <h1>Women Empowerment through ICT</h1>
+            <p class="hero-subtitle">Higher Studies, Research and Career</p>
+            <div class="hero-details">
+                <div class="detail-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <span>Dhaka, Bangladesh</span>
+                </div>
+                <div class="detail-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
+                    <span>June 7, 2014</span>
+                </div>
+                <div class="detail-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+                    <span>BUET, Dhaka</span>
+                </div>
+            </div>
+            <div class="cta-buttons">
+                <a href="#registration" class="btn btn-primary">Register Now</a>
+                <a href="#posters" class="btn btn-secondary">Submit Poster</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="fade-in">
+        <div class="section-header">
+            <span class="section-label">About the Workshop</span>
+            <h2>Empowering Women in Computing</h2>
+            <p class="section-description">
+                WE-ICT 2014 provides a forum for researchers, faculty members, industry professionals, and students to exchange ideas, 
+                experience, and success stories to encourage, support, connect and motivate Bangladeshi women in computing.
+            </p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Mission</h3>
+                <p>Creating opportunities for women in ICT through knowledge sharing, mentorship, and networking in higher education and research.</p>
+            </div>
+            <div class="about-card">
+                <h3>Organizer</h3>
+                <p>Department of Computer Science and Engineering, Bangladesh University of Engineering and Technology (BUET)</p>
+            </div>
+            <div class="about-card">
+                <h3>Project</h3>
+                <p>Organized under subproject CP#2082: Enhancement of Graduate Studies Facilities for CSE, BUET under HEQEP</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venue Section -->
+    <section id="venue" class="fade-in">
+        <div class="section-header">
+            <span class="section-label">Location</span>
+            <h2>Venue</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Location</h3>
+                <p>Graduate Complex, Bangladesh University of Engineering and Technology (BUET), Dhaka, Bangladesh</p>
+            </div>
+            <div class="about-card">
+                <h3>About Dhaka</h3>
+                <p>Dhaka is the capital city of Bangladesh, a beautiful South-Asian country with rich culture and vibrant academic community.</p>
+            </div>
+            <div class="about-card">
+                <h3>Date & Time</h3>
+                <p>June 7, 2014<br>Starting at 8:30 AM</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceedings Section -->
+    <section id="proceedings" class="fade-in">
+        <div class="section-header">
+            <span class="section-label">Publication</span>
+            <h2>Proceedings</h2>
+            <p class="section-description">
+                WE-ICT will not have formal proceedings. However, a booklet (without ISBN number) of accepted posters, 
+                write-ups by Bangladeshi distinguished female ICT personnel, and statistics of female graduates, 
+                will be distributed at the workshop for the benefit of the community and must be regarded as a collection of preprints.
+            </p>
+        </div>
+        <div style="max-width: 800px; margin: 2rem auto; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(10px);">
+            <h3 style="color: var(--accent); margin-bottom: 1rem; font-size: 1.3rem;">Publication Opportunities</h3>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                Results presented at WE-ICT may be published in other conferences with formal proceedings and/or in journals. 
+                Posters of already accepted papers at other conferences can also be submitted at WE-ICT.
+            </p>
+        </div>
+    </section>
+
+    <!-- Keynote Section -->
+    <section id="keynote" class="fade-in">
+        <div class="section-header">
+            <span class="section-label">Featured Speakers</span>
+            <h2>Keynote & Invited Talks</h2>
+        </div>
+        <div class="keynote-grid">
+            <div class="keynote-card">
+                <h3>Towards Higher Studies, Research and Academic Career</h3>
+                <h4>Dr. Mahmuda Naznin</h4>
+                <p>Associate Professor, CSE, BUET</p>
+                <p style="margin-top: 1rem; font-style: italic;">Challenges and Opportunities</p>
+            </div>
+            <div class="keynote-card">
+                <h3>Developing Research Career in Computing</h3>
+                <h4>Dr. Shamsi Tamara Iqbal</h4>
+                <p>Microsoft Research, USA</p>
+            </div>
+            <div class="keynote-card">
+                <h3>Higher Studies Abroad</h3>
+                <h4>Sumaiya Nazeen</h4>
+                <p>International Fulbright S&T Fellow at MIT, USA</p>
+                <p style="margin-top: 1rem; font-style: italic;">Guideline and Advice</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section id="schedule" class="fade-in">
+        <div class="section-header">
+            <span class="section-label">Event Schedule</span>
+            <h2>Workshop Program</h2>
+            <p class="section-description">Join us for a full day of inspiring talks, networking, and poster presentations</p>
+        </div>
+        <div class="schedule-timeline">
+            <div class="schedule-item">
+                <div class="schedule-time">08:30</div>
+                <div class="schedule-content">
+                    <h4>Entry and Registration</h4>
+                    <p>Welcome and registration for all participants</p>
+                </div>
+                <div class="schedule-dot"></div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">09:00</div>
+                <div class="schedule-content">
+                    <h4>Opening Ceremony</h4>
+                    <p>Official opening of WE-ICT 2014</p>
+                </div>
+                <div class="schedule-dot"></div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">09:15</div>
+                <div class="schedule-content">
+                    <h4>Chief Guest Speech</h4>
+                    <p>Inaugural address</p>
+                </div>
+                <div class="schedule-dot"></div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">10:00</div>
+                <div class="schedule-content">
+                    <h4>Keynote Speech</h4>
+                    <p>Sharing Success Stories and Experiences</p>
+                </div>
+                <div class="schedule-dot"></div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">16:30</div>
+                <div class="schedule-content">
+                    <h4>Poster Presentation</h4>
+                    <p>Showcase of research and innovative ideas</p>
+                </div>
+                <div class="schedule-dot"></div>
+            </div>
+            <div class="schedule-item">
+                <div class="schedule-time">17:30</div>
+                <div class="schedule-content">
+                    <h4>Award Ceremony and Closing</h4>
+                    <p>Recognition of best posters and closing remarks</p>
+                </div>
+                <div class="schedule-dot"></div>
+            </div>
+        </div>
+        <p style="text-align: center; color: rgba(248, 250, 252, 0.6); margin-top: 2rem;">* Times subject to change</p>
+    </section>
+
+    <!-- Call for Posters Section -->
+    <section id="posters" class="fade-in">
+        <div class="section-header">
+            <span class="section-label">Call for Posters</span>
+            <h2>Submit Your Research</h2>
+            <p class="section-description">
+                We invite authors to submit 2-page extended abstracts on novel research ideas or results related to the 
+                application of ICT for the empowerment of women in different sectors.
+            </p>
+        </div>
+        
+        <div style="max-width: 900px; margin: 2rem auto 3rem; background: linear-gradient(135deg, rgba(217, 70, 166, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%); border: 1px solid rgba(217, 70, 166, 0.3); border-radius: 20px; padding: 2rem; backdrop-filter: blur(10px);">
+            <h3 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.5rem;">Poster Session Highlights</h3>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem;">
+                The poster session aims to provide an opportunity to present and have an informal discussion of one's research 
+                with the participants of the workshop. <strong style="color: var(--accent);">Best three posters will be awarded.</strong>
+            </p>
+            <p style="font-size: 1.1rem; line-height: 1.8;">
+                Posters of already accepted papers at other conferences can also be submitted at WE-ICT. In addition, 
+                ideas and results presented at WE-ICT may be published in other conferences with formal proceedings and/or in journals.
+            </p>
+        </div>
+
+        <h3 style="text-align: center; color: var(--secondary); margin-bottom: 2rem; font-size: 2rem;">Research Topics</h3>
+        <div class="topics-grid">
+            <div class="topic-item">
+                <div class="topic-icon">💡</div>
+                <span>Eradicating Poverty</span>
+            </div>
+            <div class="topic-item">
+                <div class="topic-icon">🛡️</div>
+                <span>Protecting from Domestic Violence</span>
+            </div>
+            <div class="topic-item">
+                <div class="topic-icon">🚶</div>
+                <span>Combating Street Harassment</span>
+            </div>
+            <div class="topic-item">
+                <div class="topic-icon">💼</div>
+                <span>Empowering Women in Workplaces</span>
+            </div>
+            <div class="topic-item">
+                <div class="topic-icon">🏥</div>
+                <span>Women Health and Education</span>
+            </div>
+            <div class="topic-item">
+                <div class="topic-icon">🚀</div>
+                <span>Strengthening Self Employment</span>
+            </div>
+            <div class="topic-item">
+                <div class="topic-icon">🌐</div>
+                <span>Bridging Digital Divide</span>
+            </div>
+            <div class="topic-item">
+                <div class="topic-icon">💻</div>
+                <span>Accessing Technology</span>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="http://buet.ac.bd/cse/HEQEP/workshop/WE-ICT/Submission" target="_blank" class="btn btn-primary">
+                View Submission Guidelines
+            </a>
+        </div>
+    </section>
+
+    <!-- Committees Section -->
+    <section id="committees" class="fade-in">
+        <div class="section-header">
+            <span class="section-label">Leadership</span>
+            <h2>Our Committees</h2>
+        </div>
+
+        <div class="committee-section">
+            <h3 style="color: var(--primary); margin-bottom: 1.5rem; font-size: 1.8rem;">Advisory Committee</h3>
+            <div class="committee-grid">
+                <div class="committee-member">
+                    <h4>Abu Sayed Md. Latiful Hoque</h4>
+                    <p>CSE, BUET</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Mohammad Mahfuzul Islam</h4>
+                    <p>CSE, BUET</p>
+                </div>
+                <div class="committee-member">
+                    <h4>M. Kaykobad</h4>
+                    <p>CSE, BUET</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Mahmuda Naznin</h4>
+                    <p>CSE, BUET</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Md. Saidur Rahman</h4>
+                    <p>CSE, BUET</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="committee-section">
+            <h3 style="color: var(--secondary); margin-bottom: 1.5rem; font-size: 1.8rem;">Program Committee</h3>
+            <div class="committee-grid">
+                <div class="committee-member">
+                    <h4>Tanzima Hashem (Chair)</h4>
+                    <p>CSE, BUET</p>
+                </div>
+                <div class="committee-member">
+                    <h4>A. B. M. Alim Al Islam</h4>
+                    <p>CSE, BUET</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Sadia Afroz</h4>
+                    <p>UC Berkeley, USA</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Nova Ahmed</h4>
+                    <p>CSE, NSU</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Farhana Ashraf</h4>
+                    <p>Google, USA</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Mohammed Eunus Ali</h4>
+                    <p>CSE, BUET</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Bilkis Jamal Ferdosi</h4>
+                    <p>CSE, SUB</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Samira Khan</h4>
+                    <p>CMU, USA</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Sumaiya Nazeen</h4>
+                    <p>MIT, USA</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Shaila Pervin</h4>
+                    <p>IBM Research, Australia</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Suraiya Pervin</h4>
+                    <p>CSE, DU</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Md. Yusuf Sarwar Uddin</h4>
+                    <p>CSE, BUET</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="committee-section">
+            <h3 style="color: var(--accent); margin-bottom: 1.5rem; font-size: 1.8rem;">Organizing Committee</h3>
+            <div class="committee-grid">
+                <div class="committee-member">
+                    <h4>Tanzima Hashem (Chair)</h4>
+                    <p>CSE, BUET</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Johra Muhammad Moosa (Secretary)</h4>
+                    <p>CSE, BUET</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Md. Aashikur Rahman Azim</h4>
+                    <p>CSE, BUET</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Md. Mosiur Rahman Lunar</h4>
+                    <p>CSE, BUET</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Mahmuda Naznin</h4>
+                    <p>CSE, BUET</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Shubhra Kanti Karmaker Santu</h4>
+                    <p>CSE, BUET</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Md. Mustafizur Rahman</h4>
+                    <p>CSE, BUET</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Sajjadur Rahman</h4>
+                    <p>CSE, BUET</p>
+                </div>
+                <div class="committee-member">
+                    <h4>Fatema Tuz Zohora</h4>
+                    <p>CSE, BUET</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Dates Section -->
+    <section id="dates" class="fade-in">
+        <div class="section-header">
+            <span class="section-label">Mark Your Calendar</span>
+            <h2>Important Dates</h2>
+        </div>
+        <div class="dates-grid">
+            <div class="date-card">
+                <div class="date">May 22</div>
+                <div class="event">Submission Deadline</div>
+            </div>
+            <div class="date-card">
+                <div class="date">May 27</div>
+                <div class="event">Notification of Acceptance</div>
+            </div>
+            <div class="date-card">
+                <div class="date">May 30</div>
+                <div class="event">Camera Ready Version</div>
+            </div>
+            <div class="date-card">
+                <div class="date">June 01</div>
+                <div class="event">Registration Deadline</div>
+            </div>
+            <div class="date-card">
+                <div class="date">June 07</div>
+                <div class="event">Workshop Day</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="registration" class="fade-in" style="text-align: center; padding: 6rem 2rem; background: linear-gradient(135deg, rgba(217, 70, 166, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%); border-radius: 30px; margin: 4rem 2rem;">
+        <h2 style="margin-bottom: 1.5rem;">Ready to Join Us?</h2>
+        <p style="font-size: 1.3rem; color: rgba(248, 250, 252, 0.8); margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">
+            Registration for WE-ICT 2014 is completely free! Join us in empowering women through ICT.
+        </p>
+        <a href="http://buet.ac.bd/cse/HEQEP/workshop/WE-ICT/Registration" target="_blank" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;">
+            Register Now - It's Free!
+        </a>
+        <p style="margin-top: 2rem; color: rgba(248, 250, 252, 0.6);">Registration Deadline: June 01, 2014</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="fade-in">
+        <div class="section-header">
+            <span class="section-label">Get in Touch</span>
+            <h2>Contact Information</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem; backdrop-filter: blur(10px);">
+            <h3 style="color: var(--primary); margin-bottom: 1.5rem; font-size: 1.5rem;">Dr. Tanzima Hashem</h3>
+            <p style="margin-bottom: 1rem; font-size: 1rem; line-height: 1.6;">Department of Computer Science and Engineering</p>
+            <p style="margin-bottom: 1rem; font-size: 1rem; line-height: 1.6;">Bangladesh University of Engineering and Technology</p>
+            <p style="margin-bottom: 1rem; font-size: 1rem; line-height: 1.6;">Dhaka-1000, Bangladesh</p>
+            <div style="margin-top: 2rem; padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 10px;">
+                <p style="font-size: 1rem; margin-bottom: 0.5rem;"><strong style="color: var(--primary);">Email:</strong></p>
+                <a href="/cdn-cgi/l/email-protection#582c39362231353930392b303d35183f35393134763b3735" style="color: var(--secondary); text-decoration: none; word-break: break-all; font-size: 1rem;"><span class="__cf_email__" data-cfemail="176376796d7e7a767f76647f727a57707a767e7b3974787a">[email&#160;protected]</span></a>
+            </div>
+            <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 10px;">
+                <p style="font-size: 1rem; margin-bottom: 0.5rem;"><strong style="color: var(--primary);">Website:</strong></p>
+                <a href="http://buet.ac.bd/cse/HEQEP/workshop/WE-ICT" target="_blank" style="color: var(--secondary); text-decoration: none; word-break: break-all; font-size: 0.95rem; display: block;">buet.ac.bd/cse/HEQEP/workshop/WE-ICT</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="logo.jpeg" alt="WE-ICT Logo" style="height: 80px; filter: drop-shadow(0 0 15px rgba(217, 70, 166, 0.3));">
+            </div>
+            <div class="footer-info">
+                <div class="footer-section">
+                    <h4>WE-ICT 2014</h4>
+                    <p>Workshop on Women Empowerment through ICT: Higher Studies, Research and Career</p>
+                    <p>June 7, 2014 | Dhaka, Bangladesh</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Organized By</h4>
+                    <p>Department of Computer Science and Engineering</p>
+                    <p>Bangladesh University of Engineering and Technology (BUET)</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Supported By</h4>
+                    <p>Subproject CP#2082</p>
+                    <p>Higher Education Quality Enhancement Project (HEQEP)</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2014 WE-ICT. Department of CSE, BUET. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Add animate class to all fade-in elements for progressive enhancement
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.classList.add('animate');
+        });
+
+        // Scroll Animation Observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                navLinks.classList.toggle('mobile-open');
+                mobileMenuBtn.textContent = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
+            });
+
+            // Close mobile menu when clicking on a link
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('mobile-open');
+                    mobileMenuBtn.textContent = '☰';
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                    navLinks.classList.remove('mobile-open');
+                    mobileMenuBtn.textContent = '☰';
+                }
+            });
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Create Particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = Math.random() * 4 + 2 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animatio

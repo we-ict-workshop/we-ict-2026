@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WE-ICT 2026 | Workshop on Women Empowerment through ICT</title>
+    <title>WE-ICT 2014 | Workshop on Women Empowerment through ICT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -657,14 +657,9 @@
             transform: scale(0.95);
         }
 
-        .nav-links.mobile-open {
-            display: flex;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             .nav-links {
-                display: none;
                 position: fixed;
                 top: 70px;
                 left: 0;
@@ -677,18 +672,16 @@
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
                 z-index: 999;
-                animation: slideDown 0.3s ease;
+                max-height: 0;
+                overflow: hidden;
+                opacity: 0;
+                transition: all 0.3s ease;
             }
 
-            @keyframes slideDown {
-                from {
-                    opacity: 0;
-                    transform: translateY(-20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
+            .nav-links.mobile-open {
+                max-height: 600px;
+                opacity: 1;
+                display: flex;
             }
 
             .nav-links li {
@@ -779,9 +772,9 @@
         <nav>
             <div class="logo">
                 <img src="logo.jpeg" alt="WE-ICT Logo">
-                <span class="logo-text">WE-ICT 2026</span>
+                <span class="logo-text">WE-ICT 2014</span>
             </div>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#about">About</a></li>
                 <li><a href="#venue">Venue</a></li>
                 <li><a href="#keynote">Keynote</a></li>
@@ -792,14 +785,14 @@
                 <li><a href="#dates">Important Dates</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">☰</button>
         </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <div class="hero-badge">Workshop 2026</div>
+            <div class="hero-badge">Workshop 2014</div>
             <h1>Women Empowerment through ICT</h1>
             <p class="hero-subtitle">Higher Studies, Research and Career</p>
             <div class="hero-details">
@@ -809,7 +802,7 @@
                 </div>
                 <div class="detail-item">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
-                    <span>February 24, 2026</span>
+                    <span>June 7, 2014</span>
                 </div>
                 <div class="detail-item">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
@@ -829,7 +822,7 @@
             <span class="section-label">About the Workshop</span>
             <h2>Empowering Women in Computing</h2>
             <p class="section-description">
-                WE-ICT 2026 provides a forum for researchers, faculty members, industry professionals, and students to exchange ideas, 
+                WE-ICT 2014 provides a forum for researchers, faculty members, industry professionals, and students to exchange ideas, 
                 experience, and success stories to encourage, support, connect and motivate Bangladeshi women in computing.
             </p>
         </div>
@@ -866,7 +859,7 @@
             </div>
             <div class="about-card">
                 <h3>Date & Time</h3>
-                <p>February 24, 2026<br>Starting at 8:30 AM</p>
+                <p>June 7, 2014<br>Starting at 8:30 AM</p>
             </div>
         </div>
     </section>
@@ -938,7 +931,7 @@
                 <div class="schedule-time">09:00</div>
                 <div class="schedule-content">
                     <h4>Opening Ceremony</h4>
-                    <p>Official opening of WE-ICT 2026</p>
+                    <p>Official opening of WE-ICT 2014</p>
                 </div>
                 <div class="schedule-dot"></div>
             </div>
@@ -1193,11 +1186,11 @@
                 <div class="event">Camera Ready Version</div>
             </div>
             <div class="date-card">
-                <div class="date">February 24</div>
+                <div class="date">June 01</div>
                 <div class="event">Registration Deadline</div>
             </div>
             <div class="date-card">
-                <div class="date">February 24</div>
+                <div class="date">June 07</div>
                 <div class="event">Workshop Day</div>
             </div>
         </div>
@@ -1207,12 +1200,12 @@
     <section id="registration" class="fade-in" style="text-align: center; padding: 6rem 2rem; background: linear-gradient(135deg, rgba(217, 70, 166, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%); border-radius: 30px; margin: 4rem 2rem;">
         <h2 style="margin-bottom: 1.5rem;">Ready to Join Us?</h2>
         <p style="font-size: 1.3rem; color: rgba(248, 250, 252, 0.8); margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto;">
-            Registration for WE-ICT 2026 is completely free! Join us in empowering women through ICT.
+            Registration for WE-ICT 2014 is completely free! Join us in empowering women through ICT.
         </p>
         <a href="http://buet.ac.bd/cse/HEQEP/workshop/WE-ICT/Registration" target="_blank" class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;">
             Register Now - It's Free!
         </a>
-        <p style="margin-top: 2rem; color: rgba(248, 250, 252, 0.6);">Registration Deadline: February 24, 2026</p>
+        <p style="margin-top: 2rem; color: rgba(248, 250, 252, 0.6);">Registration Deadline: June 01, 2014</p>
     </section>
 
     <!-- Contact Section -->
@@ -1228,7 +1221,7 @@
             <p style="margin-bottom: 1rem; font-size: 1rem; line-height: 1.6;">Dhaka-1000, Bangladesh</p>
             <div style="margin-top: 2rem; padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 10px;">
                 <p style="font-size: 1rem; margin-bottom: 0.5rem;"><strong style="color: var(--primary);">Email:</strong></p>
-                <a href="/cdn-cgi/l/email-protection#582c39362231353930392b303d35183f35393134763b3735" style="color: var(--secondary); text-decoration: none; word-break: break-all; font-size: 1rem;"><span class="__cf_email__" data-cfemail="176376796d7e7a767f76647f727a57707a767e7b3974787a">[email&#160;protected]</span></a>
+                <a href="mailto:tanzima@cse.buet.ac.bd" style="color: var(--secondary); text-decoration: none; word-break: break-all; font-size: 1rem;">tanzima@cse.buet.ac.bd</a>
             </div>
             <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(255, 255, 255, 0.03); border-radius: 10px;">
                 <p style="font-size: 1rem; margin-bottom: 0.5rem;"><strong style="color: var(--primary);">Website:</strong></p>
@@ -1245,9 +1238,9 @@
             </div>
             <div class="footer-info">
                 <div class="footer-section">
-                    <h4>WE-ICT 2026</h4>
+                    <h4>WE-ICT 2014</h4>
                     <p>Workshop on Women Empowerment through ICT: Higher Studies, Research and Career</p>
-                    <p>February 24, 2026 | Dhaka, Bangladesh</p>
+                    <p>June 7, 2014 | Dhaka, Bangladesh</p>
                 </div>
                 <div class="footer-section">
                     <h4>Organized By</h4>
@@ -1261,13 +1254,13 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2026 WE-ICT. Department of CSE, BUET. All rights reserved.</p>
+                <p>&copy; 2014 WE-ICT. Department of CSE, BUET. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Add animate class to all fade-in elements for progressive enhancement
+    <script>
+        // Add animate class to all fade-in elements
         document.querySelectorAll('.fade-in').forEach(el => {
             el.classList.add('animate');
         });
@@ -1300,34 +1293,32 @@
             }
         });
 
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
+        // Mobile Menu Toggle - FIXED VERSION
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
         
-        if (mobileMenuBtn && navLinks) {
-            mobileMenuBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                navLinks.classList.toggle('mobile-open');
-                mobileMenuBtn.textContent = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
-            });
+        // Toggle menu on button click
+        mobileMenuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            navLinks.classList.toggle('mobile-open');
+            this.textContent = navLinks.classList.contains('mobile-open') ? '✕' : '☰';
+        });
 
-            // Close mobile menu when clicking on a link
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('mobile-open');
-                    mobileMenuBtn.textContent = '☰';
-                });
+        // Close mobile menu when clicking on a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-open');
+                mobileMenuBtn.textContent = '☰';
             });
+        });
 
-            // Close menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-                    navLinks.classList.remove('mobile-open');
-                    mobileMenuBtn.textContent = '☰';
-                }
-            });
-        }
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.contains(e.target) && e.target !== mobileMenuBtn) {
+                navLinks.classList.remove('mobile-open');
+                mobileMenuBtn.textContent = '☰';
+            }
+        });
 
         // Smooth Scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1356,4 +1347,12 @@
                 particle.style.left = Math.random() * 100 + '%';
                 particle.style.top = Math.random() * 100 + '%';
                 particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animatio
+                particle.style.animationDuration = Math.random() * 10 + 10 + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        createParticles();
+    </script>
+</body>
+</html>

@@ -667,27 +667,28 @@
                 background: rgba(15, 23, 42, 0.98);
                 backdrop-filter: blur(20px);
                 flex-direction: column;
-                padding: 2rem;
-                gap: 1.5rem;
+                padding: 1.5rem 2rem;
+                gap: 1rem;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
                 z-index: 999;
                 max-height: 0;
-                overflow: hidden;
+                overflow-y: auto;
+                overflow-x: hidden;
                 opacity: 0;
                 transition: all 0.3s ease;
             }
-
+        
             .nav-links.mobile-open {
-                max-height: 600px;
+                max-height: 80vh;
                 opacity: 1;
                 display: flex;
             }
-
+        
             .nav-links li {
                 text-align: center;
             }
-
+        
             .nav-links a {
                 font-size: 1.1rem;
                 display: block;

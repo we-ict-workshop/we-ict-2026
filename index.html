@@ -29,12 +29,22 @@
             box-sizing: border-box;
         }
 
+        html, body {
+            height: 100%; /* ami koresi*/
+        }
+
         body {
             font-family: 'DM Sans', sans-serif;
             background: var(--bg-primary);
             color: var(--text-primary);
             overflow-x: hidden;
             line-height: 1.6;
+            display: flex;
+            flex-direction: column; /* ami koresi*/
+        }
+
+        .page-wrapper {
+            flex: 1; /* ami koresi*/
         }
 
         /* Animated Background */
@@ -1144,7 +1154,8 @@
     </style>
 </head>
 <body>
-    <!-- Background Animation -->
+    <div class="page-wrapper"> /* ami koresi*/
+        <!-- Background Animation -->
     <div class="bg-animation"></div>
 
     <!-- Particles -->
@@ -1756,6 +1767,8 @@
             </div>
         </div>
     </section>
+    </div> /* ami koresi*/
+    
 
     <!-- Footer -->
     <footer>
